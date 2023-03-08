@@ -11,10 +11,22 @@ foodElement.forEach(item => {
     })
 })
 
-// filter
+function activeButton (btnActive) {
+    btnList.forEach( btn => {
+        btn.classList.remove('active')
+    })
+    btnActive.classList.add('active')
+}
+
 btnList.forEach(btn => {
     btn.addEventListener('click', (e) => {
+        activeButton(btn)
         let typeBtn = e.currentTarget.getAttribute('type')
+        if (typeBtn == 'all') {
+            renderHTML(array)
+            return
+        }
+        
         let filterData = array.filter(food => {
             return food.type == typeBtn
         })
@@ -30,8 +42,8 @@ function renderHTML(list) {
         var foodItem = document.createElement('div')
         foodItem.classList.add('food-item')
         foodItem.setAttribute('type', item.type)
+
         foodItem.innerHTML = `<img src="${item.src}" alt="${item.type}">`
         foodList.appendChild(foodItem)
-        console.log(foodItem)
     })
 }

@@ -72,3 +72,8 @@ body {
    object-fit: cover;
    object-position: center;
 }
+
+.food-item img:hover {
+    transition: .5s all;
+    transform: scale(2) rotate(90deg);
+}
